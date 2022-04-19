@@ -70,6 +70,18 @@ for i in range(1,max_no_date+1):
     t_cell = ws.cell(row=1, column=3+i)
     t_cell.value = "Date " + str(i)
 
+title_font_style = Font(size=12, italic=True, bold=True, underline='single')
+for cell in ws["1:1"]:
+    cell.font = title_font_style
+
+dims = {}
+for row in ws.rows:
+    for cell in row:
+        if cell.value:
+            dims[cell.column_letter] = max((dims.get(cell.column_letter, 0), len(str(cell.value))))  
+for col, value in dims.items():
+    ws.column_dimensions[col].width = value+1
+
 wb.save('output/payment_info.xlsx')
 
 
