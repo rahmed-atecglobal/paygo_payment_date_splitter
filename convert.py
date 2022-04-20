@@ -46,7 +46,7 @@ for payid in dlist:
     for rows in row_list:
         date = df['Recorded (UTC)'][rows]
         date_list.append(date)
-    #print(f"{counter}. {payid} :: {product_name}  :: {row_list} : {date_list}")
+    print(f"{counter}. {payid} :: {product_name}  :: {row_list} : {date_list}")
 
     if len(date_list) > max_no_date:
         max_no_date = len(date_list)
